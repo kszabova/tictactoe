@@ -74,18 +74,20 @@ def play():
         take_turn()
         print("This is the current state of the game:")
         draw_board()
+    if play_again():
+        reset()
+        play()
+    else:
+        sys.exit()
+
+def play_again():
     print("Thank you for playing! Do you want to play again? (y/n)")
     while True:
         play_again = input()
         if play_again not in "yn":
             print("Sorry, didn't quite catch that. Please enter 'y' or 'n'.")
         else:
-            break
-    if play_again == 'y':
-        reset()
-        play()
-    else:
-        sys.exit()
+            return play_again.lower().startswith("y")
 
 play()
 
